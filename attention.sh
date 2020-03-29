@@ -35,7 +35,8 @@ curl -s $URL -o ${BASE}/attention.ogg && DOWNLOADED=1
 
 if [ ! -z ${DOWNLOADED} ]; then
     for i in $(seq 1 ${LOOP}); do
-        timeout 60 mplayer ${BASE}/sounds/${NOTIFICATION} ${BASE}/attention.ogg
+        timeout 10 mplayer ${BASE}/sounds/${NOTIFICATION} 
+        timeout 40 ${BASE}/attention.ogg
         sleep 3
     done
 fi
