@@ -8,6 +8,8 @@ NOTIFICATION=3.mp3
 LOOP=3
 # base location for config
 BASE=$(dirname $0)
+# google credentials file path
+GOOGLE_APPLICATION_CREDENTIALS=/home/pi/gcloud-api.json
 
 # checksum of last request.json
 MD5=$(md5sum ${BASE}/request.json | cut -d ' ' -f 1)
@@ -28,7 +30,7 @@ if [[ "${MD5}" != ${PREVIOUS_MD5} ]]; then
     -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
     -H "Content-Type: application/json; charset=utf-8" \
     -d @request.json https://texttospeech.googleapis.com/v1/text:synthesize \
-    | jq -r '.audioContent' | base64 -d > attention.mp3 && DOWNLOADED=1
+    | jq -r '.audioContent' | base64 -d > ${BASE}/attention.mp3 && DOWNLOADED=1
 fi
 
 if [ ! -z ${DOWNLOADED} ]; then
