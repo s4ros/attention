@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo $@ | nc -N localhost 8666
+echo $@ | ssh s4ros.it "nc localhost 8666"

@@ -19,8 +19,16 @@ fi
 
 # if the latest md5 checksum is the same as the current
 # exit 0
-if [ ! -z ${PREVIOUS_MD5} ]; then
-    test "${MD5}" == "${PREVIOUS_MD5}" && exit 0
+# if [ ! -z ${PREVIOUS_MD5} ]; then
+#     test "${MD5}" != "${PREVIOUS_MD5}" && exit 0
+# fi
+
+if [[ "${MD5}" != ${PREVIOUS_MD5} ]]; then
+    curl -X POST \
+    -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -d @request.json https://texttospeech.googleapis.com/v1/text:synthesize \
+    | jq -r '.audioContent' | base64 -d > attention.mp3
 fi
 
 if [ ! -z ${DOWNLOADED} ]; then
