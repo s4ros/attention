@@ -28,7 +28,7 @@ if [[ "${MD5}" != ${PREVIOUS_MD5} ]]; then
     -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
     -H "Content-Type: application/json; charset=utf-8" \
     -d @request.json https://texttospeech.googleapis.com/v1/text:synthesize \
-    | jq -r '.audioContent' | base64 -d > attention.mp3
+    | jq -r '.audioContent' | base64 -d > attention.mp3 && DOWNLOADED=1
 fi
 
 if [ ! -z ${DOWNLOADED} ]; then
