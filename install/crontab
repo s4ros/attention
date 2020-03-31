@@ -1,0 +1,4 @@
+PATH=/home/pi/bin:/home/pi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+GOOGLE_APPLICATION_CREDENTIALS=/home/pi/gcloud-api.json
+
+* * * * * cd /home/pi/attention; ./attention.sh >/tmp/attention.log 2>&1

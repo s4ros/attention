@@ -1,0 +1,16 @@
+[Unit]
+Description=Keeps a tunnel to 'remote.example.com' open
+After=network.target
+
+[Service]
+User=pi
+# -p [PORT]
+# -l [user]
+# -M 0 --> no monitoring
+# -N Just open the connection and do nothing (not interactive)
+# LOCALPORT:IP_ON_EXAMPLE_COM:PORT_ON_EXAMPLE_COM
+ExecStart=/usr/bin/autossh -N -q -o "ServerAliveInterval 60" -o "ServerAliveCountMax 3" -p 22 -l s4ros s4ros.it -R 8666:127.0.0.1:8666 -R 8622:127.0.01:22 -i /home/pi/.ssh/id_rsa
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Attention receiver
+After=network.target
+
+[Service]
+User=pi
+# -p [PORT]
+# -l [user]
+# -M 0 --> no monitoring
+# -N Just open the connection and do nothing (not interactive)
+# LOCALPORT:IP_ON_EXAMPLE_COM:PORT_ON_EXAMPLE_COM
+ExecStart=/home/pi/attention/receiver.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
