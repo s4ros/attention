@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BASE=$(dirname ${0})
+NOTIFICATION=$1
+
+echo $0 $(pwd)
+
+exec mplayer -ao alsa ${BASE}/sounds/${NOTIFICATION}
