@@ -34,6 +34,7 @@ if [[ "${MD5}" != ${PREVIOUS_MD5} ]]; then
 fi
 
 if [ ! -z ${DOWNLOADED} ]; then
+    echo $MD5 > ${BASE}/last.md5
     for i in $(seq 1 ${LOOP}); do
         #(timeout 10 mplayer -ao alsa ${BASE}/sounds/${NOTIFICATION})
         ${BASE}/play-notification ${NOTIFICATION}
@@ -42,4 +43,3 @@ if [ ! -z ${DOWNLOADED} ]; then
     done
 fi
 
-echo $MD5 > ${BASE}/last.md5
