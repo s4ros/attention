@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        Enter your message here.
+        <form method="POST" action="{{ url_for('attention') }}">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <div>
+                    {{ form.message.label() }}
+                    {{ form.message() }}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit() }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

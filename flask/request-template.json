@@ -1,0 +1,13 @@
+{
+  "input":{
+    "text":"PLACE_HERE"
+  },
+  "voice":{
+    "languageCode":"pl-PL",
+    "name":"pl-PL-Standard-B",
+    "ssmlGender":"MALE"
+  },
+  "audioConfig":{
+    "audioEncoding":"MP3"
+  }
+}
